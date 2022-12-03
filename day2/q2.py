@@ -20,9 +20,18 @@ file.close()
 o_rock = "A"
 o_paper = "B"
 o_scissor = "C"
+
+rock = 1
+paper = 2
+scissor = 3
+
 win = "Z"
 lose = "X"
 draw = "Y"
+
+lose_val = 0
+tie_val = 3
+win_val = 6
 
 sum = 0
 for line in input:
@@ -32,25 +41,25 @@ for line in input:
   
   if opponent == o_rock:
     if result == win:
-      sum += (2 + 6)
+      sum += (paper + win_val)
     if result == lose:
-      sum += (3 + 0)
+      sum += (scissor + lose_val)
     if result == draw:
-      sum += (1 + 3)
+      sum += (rock + tie_val)
   if opponent == o_scissor:
     if result == win:
-      sum += (1 + 6)
+      sum += (rock + win_val)
     if result == lose:
-      sum += (2 + 0)
+      sum += (paper + lose_val)
     if result == draw:
-      sum += (3 + 3)
+      sum += (scissor + tie_val)
   if opponent == o_paper:
     if result == win:
-      sum += (3 + 6)
+      sum += (scissor + win_val)
     if result == lose:
-      sum += (1 + 0)
+      sum += (rock + lose_val)
     if result == draw:
-      sum += (2 + 3)
+      sum += (paper + tie_val)
   
   
   
