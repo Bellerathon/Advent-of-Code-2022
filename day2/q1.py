@@ -38,6 +38,14 @@ y_rock = "X"
 y_paper= "Y"
 y_scissor = "Z"
 
+rock = 1
+paper = 2
+scissor = 3
+
+lose = 0
+tie = 3
+win = 6
+
 sum = 0
 for line in input:
   line= line.strip("\n")
@@ -46,24 +54,24 @@ for line in input:
   
   if you == y_rock:
     if opponent == o_paper:
-      sum += (1 + 0)
-    if opponent == o_scissor:
-      sum += (1 + 6)
-    if opponent == o_rock:
-      sum += (1 + 3)
-  if you == y_paper:
+      sum += (rock + lose)
+    elif opponent == o_scissor:
+      sum += (rock + win)
+    elif opponent == o_rock:
+      sum += (rock + tie)
+  elif you == y_paper:
     if opponent == o_paper:
-      sum += (2 + 3)
-    if opponent == o_scissor:
-      sum += (2 + 0)
-    if opponent == o_rock:
-      sum += (2 + 6)
-  if you == y_scissor:
+      sum += (paper + tie)
+    elif opponent == o_scissor:
+      sum += (paper + lose)
+    elif opponent == o_rock:
+      sum += (paper + win)
+  elif you == y_scissor:
     if opponent == o_paper:
-      sum += (3 + 6)
-    if opponent == o_scissor:
-      sum += (3 + 3)
-    if opponent == o_rock:
-      sum += (3 + 0)
+      sum += (scissor + win)
+    elif opponent == o_scissor:
+      sum += (scissor + tie)
+    elif opponent == o_rock:
+      sum += (scissor + lose)
   
 print(sum)
