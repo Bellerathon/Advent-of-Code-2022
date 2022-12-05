@@ -44,7 +44,7 @@
 
 # Your puzzle answer was TPWCGNCCG. 
 
-file = open('input.txt', 'r')
+file = open('input.txt', 'r') 
 input = file.readlines()
 file.close()
 
