@@ -84,6 +84,7 @@ dirs = {}
 current_dir = ""
 # Parse input and keep track of current directory like a terminal where each directory path is stored as a key in a dict and it value is a list of files at that path location
 # e.g cd hello -> /hello, cd world -> /hello/world, cd .. -> /hello
+# e.g '/fhhwv/bjml/zzvs/vmbrt': ['194547', '54334', '/fhhwv/bjml/cwghv']
 for line in input:
   line = line.strip("\n")
   line = line.split(" ")
@@ -104,14 +105,14 @@ for line in input:
     # Create the path in the dict
     else:
       dirs[current_dir] = [line[0]]
-  # Folder contains a sub-directory so save its path to the dict
+  # Folder contains a sub-folder so save its path to the dict
   if line[0] == "dir":
     if current_dir in dirs:
       dirs[current_dir].append(current_dir + "/" + line[1])
     else:
       dirs[current_dir] = [current_dir + "/" + line[1]]
 
-# Get size of a sub-directory recursively
+# Get size of a sub-folder recursively
 def get_sum(key):
   values = dirs[key]
   sum = 0
@@ -135,14 +136,14 @@ for key in dirs:
   values = dirs[key]
   sum = 0
   dirs_present = False
-  # Sum of directories without counting the sub-directories
+  # Sum of directories without counting the sub-folders
   for value in values:
     if value.isdigit():
       sum += int(value)
     else:
       dirs_present = True
 
-  # If a directory size is less than limit with only the files counted then proceed to count with the subdirectories included too else continue iteration
+  # If a directory size is less than limit with only the files counted then proceed to count with the folders included too, else continue iteration
   if sum <= 100000 and dirs_present == True:
     sum = 0
     for value in values:
@@ -151,7 +152,7 @@ for key in dirs:
         sum += int(value)
       # If a directory
       else:
-        # Get size of a sub-directory
+        # Get size of a sub-folder
         sum += get_sum(value)
     if sum <= 100000:
       valid.append(int(sum))
@@ -162,7 +163,7 @@ for key in dirs:
     if sum <= 100000:
       valid.append(int(sum))
 
-# Sum of all directory size <= 100,000
+# Sum of all directories sized <= 100,000
 sum = 0
 for num in valid:
   sum += int(num)

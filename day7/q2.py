@@ -45,14 +45,14 @@ for line in input:
     # Create the path in the dict
     else:
       dirs[current_dir] = [line[0]]
-  # Folder contains a sub-directory so save its path to the dict
+  # Folder contains a sub-folder so save its path to the dict
   if line[0] == "dir":
     if current_dir in dirs:
       dirs[current_dir].append(current_dir + "/" + line[1])
     else:
       dirs[current_dir] = [current_dir + "/" + line[1]]
 
-# Get sum of a directories files and folder recursively
+# Get sum of a directories files and folders recursively
 def get_sum(key):
   values = dirs[key]
   sum = 0
