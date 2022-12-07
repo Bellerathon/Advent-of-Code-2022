@@ -87,17 +87,24 @@ current_dir = ""
 for line in input:
   line = line.strip("\n")
   line = line.split(" ")
+  # A user command
   if line[0] == "$":
     if line[1] == "cd":
+      # Reduce current directory by one level by removing everything after last "/" from it
       if line[2] == "..":
         current_dir = current_dir.rsplit('/', 1)[0]
+      # Increase directory path by one level by concatinating "/{dir name}" to it
       else:
         current_dir += str("/" + line[2])
+  # Folder contains a file
   if line[0].isdigit():
+    # Add the file size to a directory path if one exists
     if current_dir in dirs:
       dirs[current_dir].append(line[0])
+    # Create the path in the dict
     else:
       dirs[current_dir] = [line[0]]
+  # Folder contains a sub-directory so save its path to the dict
   if line[0] == "dir":
     if current_dir in dirs:
       dirs[current_dir].append(current_dir + "/" + line[1])
@@ -109,23 +116,20 @@ def get_sum(key):
   values = dirs[key]
   sum = 0
   for value in values:
+    # Only sums files
     if value.isdigit():
       sum += int(value)
 
-  # Don't recurse if size already too big with just the files counted
+  # If just file sizes haven't breached limit then include sizes of folders
   if sum <= 100000:
-    sum = 0
     for value in values:
-      if value.isdigit():
-        sum += int(value)
-      else:
+      if not value.isdigit():
         sum += get_sum(value)
     return sum
 
   return 99999999
 
 # Calculate the total size of a folder
-count = 0
 valid = []
 for key in dirs:
   values = dirs[key]
