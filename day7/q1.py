@@ -130,16 +130,16 @@ valid = []
 for key in dirs:
   values = dirs[key]
   sum = 0
-  non_digits = False
+  dirs_present = False
   # Sum of directories without counting the sub-directories
   for value in values:
     if value.isdigit():
       sum += int(value)
     else:
-      non_digits = True
+      dirs_present = True
 
   # If a directory size is less than limit with only the files counted then proceed to count with the subdirectories included too else continue iteration
-  if sum <= 100000 and non_digits == True:
+  if sum <= 100000 and dirs_present == True:
     sum = 0
     for value in values:
       # If a file
@@ -151,7 +151,7 @@ for key in dirs:
         sum += get_sum(value)
     if sum <= 100000:
       valid.append(int(sum))
-  elif sum <= 100000 and non_digits == False:
+  elif sum <= 100000 and dirs_present == False:
     if sum <= 100000:
       valid.append(int(sum))
   else:
