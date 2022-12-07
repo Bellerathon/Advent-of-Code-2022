@@ -85,6 +85,7 @@ need = 30000000 - diff
 
 sums.sort()
 
+# Find the min directory size that needs to be removed by sorting list first then iterating low -> high
 for sum in sums:
   if sum >= need:
     print(sum)
