@@ -34,11 +34,13 @@ input = "jfnjjwbbqttplpvllqgllmdllfmllscssqmqzmmwzznqnwqnwnqnjjbdbpbtbdbzzzljljz
 
 seen = []
 for i in range(len(input)):
+  # Look at a 4 char wide section at a time and move the viewport one char across each iteration e.g iter1 = [1234]5566, iter2 = 1[2345]566
   line = input[i:i+4]
   char_array = []
   for char in line:
     if char not in char_array:
       char_array.append(char)
+    # If the length are the same then there are no duplicates values
     if len(char_array) == len(line):
       print(line, i+4)
   char_array = []
