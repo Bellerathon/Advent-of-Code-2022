@@ -80,9 +80,10 @@ file = open('input.txt', 'r')
 input = file.readlines()
 file.close()
 
-dirs = {}
+dirs = {} 
 current_dir = ""
-# Parse input
+# Parse input and keep track of current directory like a terminal where each directory path is stored as a key in a dict and it value is a list of files at that path location
+# e.g cd hello -> /hello, cd world -> /hello/world, cd .. -> /hello
 for line in input:
   line = line.strip("\n")
   line = line.split(" ")
@@ -103,7 +104,7 @@ for line in input:
     else:
       dirs[current_dir] = [current_dir + "/" + line[1]]
 
-# Get size of a sub-directorie recusively
+# Get size of a sub-directory recursively
 def get_sum(key):
   values = dirs[key]
   sum = 0
@@ -111,7 +112,7 @@ def get_sum(key):
     if value.isdigit():
       sum += int(value)
 
-  # Don't recurse if size already too big with just files counted
+  # Don't recurse if size already too big with just the files counted
   if sum <= 100000:
     sum = 0
     for value in values:
@@ -123,21 +124,21 @@ def get_sum(key):
 
   return 99999999
 
-# Get the sum of file sizes in each directory
+# Calculate the total size of a folder
 count = 0
 valid = []
 for key in dirs:
   values = dirs[key]
   sum = 0
   non_digits = False
-  # Sum of directories with no sub-directories
+  # Sum of directories without counting the sub-directories
   for value in values:
     if value.isdigit():
       sum += int(value)
     else:
       non_digits = True
 
-  # If a directory has subdirectories but directory size already >= limit than don't bother calculating the total size
+  # If a directory size is less than limit with only the files counted then proceed to count with the subdirectories included too else continue iteration
   if sum <= 100000 and non_digits == True:
     sum = 0
     for value in values:
