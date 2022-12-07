@@ -70,6 +70,7 @@ for line in input:
   for i in range(num_move):
     numbers.append(stacks[from_stack - 1].pop())
   
+  # Reverse the numbers that were popped of the target list to keep them in order they were put onto the target list
   numbers = numbers[::-1]
   for number in numbers:
     stacks[to_stack - 1].append(number)
