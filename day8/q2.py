@@ -24,7 +24,7 @@ for row, line in enumerate(input):
   line = line.strip("\n")
   # if row is not top or bottom (on the borders)
   if row != 0 and row != len(rows) - 1:
-    # For every column
+    # for every column
     for column, height in enumerate(line):
       # if row is not left or right (on the borders)
       if column != 0 and column != len(line) - 1:
@@ -32,14 +32,13 @@ for row, line in enumerate(input):
         # Everything before it in that row
         before = rows[row][:column]
         # Everything after it in that row
-        after = rows[row][column + 1:]
+        after = rows[row][column+1:]
         # Everthing above it in that column
-        above = columns[column][row + 1:]
+        below = columns[column][row + 1:]
         # Everything below it in that column
-        below = columns[column][:row]
+        above = columns[column][:row]
 
         distances = []
-
         # For each sightline direction count how many trees you can see before its blocked
         distance = 0
         # Array is indexed from border to target thus reverse so tree in first index is the one closest to viewer
@@ -49,14 +48,14 @@ for row, line in enumerate(input):
           if heights >= height:
             break
         distances.append(distance)
-        
+
         distance = 0
         for heights in after:
           distance += 1
           if heights >= height:
             break
         distances.append(distance)
-        
+
         distance = 0
         above = above[::-1]
         for heights in above:
@@ -74,13 +73,13 @@ for row, line in enumerate(input):
 
         distances_array.append(distances)
 
-# Sum the total viewable sightlines from each tree to find and find which tree has the longest total sightlines
-distance_sums = []
+# Sum the total viewable distance from each sightlines from each tree to find and find which tree has the furthest total sightlines
+distances_summed = []
 for distance in distances_array:
   sum = 1
   for num in distance:
     sum *= num
-  distance_sums.append(sum)
+  distances_summed.append(sum)
 
-print(max(distance_sums))
+print(max(distances_summed))
 
