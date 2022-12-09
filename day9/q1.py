@@ -292,7 +292,7 @@ for line in input:
         if tail not in positions: positions.append(deepcopy(tail))
     # Tail is 'touching' head so just move it normaly
     else:
-      # Move tail one column to the ledt
+      # Move tail one column to the left
       if head[1] - tail[1] > 1:
         tail[1] += 1
         if tail not in positions: positions.append(deepcopy(tail))
@@ -300,7 +300,7 @@ for line in input:
       elif tail[1] - head[1] > 1:
         tail[1] -= 1
         if tail not in positions: positions.append(deepcopy(tail))
-      # Move tail row up
+      # Move tail one row up
       elif tail[0] - head[0] > 1:
         tail[0] -= 1
         if tail not in positions: positions.append(deepcopy(tail))

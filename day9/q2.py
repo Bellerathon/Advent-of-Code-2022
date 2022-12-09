@@ -438,7 +438,7 @@ file = open('input.txt', 'r')
 input = file.readlines()
 file.close()
 
-# Starting positions, 1 head and 9 knots
+# Starting positions, 10 knots: 1 head and 9 knots
 knots = [[0, 0], [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]]
 # Keep  record of each position the tail is in
 positions = []
@@ -481,19 +481,19 @@ for line in input:
           knots[j][0] = knots[j-1][0]
           if j == 9 and knots[j] not in positions: positions.append(deepcopy(knots[j]))
       else:
-        # Move knot right
+        # Move knot right one
         if knots[j-1][1] - knots[j][1] > 1:
           knots[j][1] += 1
           if j == 9 and knots[j] not in positions: positions.append(deepcopy(knots[j]))
-        # Move knot left
+        # Move knot left one
         elif knots[j][1] - knots[j-1][1] > 1:
           knots[j][1] -= 1
           if j == 9 and knots[j] not in positions: positions.append(deepcopy(knots[j]))
-        # Move knot up
+        # Move knot up one
         elif knots[j][0] - knots[j-1][0] > 1:
           knots[j][0] -= 1
           if j == 9 and knots[j] not in positions: positions.append(deepcopy(knots[j]))
-        # Move knot down
+        # Move knot down one
         elif knots[j-1][0] - knots[j][0] > 1:
           knots[j][0] += 1
           if j == 9 and knots[j] not in positions: positions.append(deepcopy(knots[j]))
