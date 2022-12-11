@@ -1,4 +1,5 @@
 <h1 align="center" bold="true">--- Day 6: Tuning Trouble ---</h1>
+<h1 align="center" bold="true">https://adventofcode.com/2022/day/6</h1>
 
 ## PART 1
 The preparations are finally complete; you and the Elves leave camp on foot and begin to make your way toward the star fruit grove.
