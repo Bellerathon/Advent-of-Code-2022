@@ -150,7 +150,7 @@ while round < 10000:
             worry *= worry
           else:
             worry += worry
-        # Divides worry by the divisble number above to reduce it
+        # Use the divisible number generated above as the modulo
         worry = worry % divisibles
         # Check if worry value is divisble by the test value
         if worry % int(monkey["test"]) == 0:
