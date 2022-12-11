@@ -1,5 +1,5 @@
 <h1 align="center" bold="true">--- Day 1: Calorie Counting ---</h1>
-<h1 align="center" bold="true">https://adventofcode.com/2022/day/1</h1>
+<h3 align="center" bold="true">https://adventofcode.com/2022/day/1</h3>
 
 ## PART 1
 Santa's reindeer typically eat regular reindeer food, but they need a lot of [magical energy](https://adventofcode.com/2018/day/25) to deliver presents on Christmas. For that, their favorite snack is a special type of star fruit that only grows deep in the jungle. The Elves have brought you on their annual expedition to the grove where the fruit grows.
