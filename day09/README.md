@@ -1,5 +1,6 @@
 <h1 align="center" bold="true">--- Day 9: Rope Bridge ---</h1>
 <h1 align="center" bold="true">https://adventofcode.com/2022/day/9</h1>
+
 ## PART 1
 This rope bridge creaks as you walk along it. You aren't sure how old it is, or whether it can even support your weight.
 
